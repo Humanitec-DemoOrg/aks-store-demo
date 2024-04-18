@@ -1,0 +1,6 @@
+apiVersion: config.humanitec.io/v1b1
+kind: ScoreDeployConfig
+workloads:
+  - name: store-demo/order-service
+    specFile: ./order-service/score.yaml
+    extensionsFile: ./order-service/humanitec.score.yaml

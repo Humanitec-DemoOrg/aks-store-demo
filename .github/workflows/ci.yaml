@@ -1,0 +1,25 @@
+name: ci
+permissions:
+  contents: read
+on:
+  push:
+jobs:
+  job:
+    strategy:
+      matrix:
+        apps: ["order-service"]
+    runs-on: ubuntu-22.04
+    env:
+      HUMCTL_VERSION: '0.21.0'
+    steps:
+      - name: checkout code
+        uses: actions/checkout@v3
+      - name: install humctl
+        uses: humanitec/setup-cli-action@v1
+        with:
+          version: ${{ env.HUMCTL_VERSION }}
+      - name: humctl score validate
+        run: |
+          humctl score validate apps/${{ matrix.apps }}/score.yaml \
+              --token ${{ secrets.HUMANITEC_TOKEN }} \
+              --org ${{ secrets.HUMANITEC_ORG }}
