@@ -5,10 +5,10 @@ containers:
   order-service:
     image: ghcr.io/azure-samples/aks-store-demo/order-service:1.3.0
     variables:
-      ORDER_QUEUE_HOSTNAME: "${resources.order-queue.host}"
-      ORDER_QUEUE_PORT: "${resources.order-queue.port}"
-      ORDER_QUEUE_USERNAME: "${resources.order-queue.username}"
-      ORDER_QUEUE_PASSWORD: "${resources.order-queue.password}"
+      ORDER_QUEUE_HOSTNAME: "${resources.orders-queue.host}"
+      ORDER_QUEUE_PORT: "${resources.orders-queue.port}"
+      ORDER_QUEUE_USERNAME: "${resources.orders-queue.username}"
+      ORDER_QUEUE_PASSWORD: "${resources.orders-queue.password}"
       ORDER_QUEUE_NAME: "orders"
       FASTIFY_ADDRESS: "0.0.0.0"
     livenessProbe:
@@ -32,5 +32,5 @@ service:
       port: 3000
       targetPort: 3000
 resources:
-  order-queue:
+  orders-queue:
     type: amqp
