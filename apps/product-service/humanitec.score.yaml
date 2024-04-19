@@ -1,0 +1,13 @@
+apiVersion: humanitec.org/v1b1
+profile: humanitec/default-module
+spec:
+  containers:
+    product-service:
+      liveness_probe:
+        failureThreshold: 5
+        initialDelaySeconds: 3
+        periodSeconds: 3
+      readiness_probe:
+        failureThreshold: 3
+        initialDelaySeconds: 3
+        periodSeconds: 5
