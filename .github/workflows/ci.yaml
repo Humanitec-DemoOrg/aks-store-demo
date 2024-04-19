@@ -7,7 +7,7 @@ jobs:
   job:
     strategy:
       matrix:
-        apps: ["order-service"]
+        apps: ["order-service", "product-service"]
     runs-on: ubuntu-22.04
     env:
       HUMCTL_VERSION: '0.21.0'
