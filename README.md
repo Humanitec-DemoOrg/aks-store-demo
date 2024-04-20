@@ -12,6 +12,7 @@ TODOs:
 - [ ] `score-compose` (current issue with `service`)
 - [ ] `mongodb` Humanitec resource definition
 - [ ] `store-admin`
+- [ ] `makeline-service`
 - [ ] `virtual-customer`
 - [ ] `virtual-worker`
 
