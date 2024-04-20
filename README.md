@@ -35,7 +35,7 @@ humctl apply \
 humctl apply \
     -f resources/in-cluster-mongodb.yaml
 
-make score-deploy
+make humanitec-deploy
 ```
 
 Get the generated DNS one the deployment is done:

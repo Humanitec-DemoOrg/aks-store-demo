@@ -39,8 +39,8 @@ compose-down:
 	docker compose down -v --remove-orphans || true
 
 ## Deploy the workloads to Humanitec.
-.PHONY: score-deploy
-score-deploy:
+.PHONY: humanitec-deploy
+humanitec-deploy:
 	humctl score deploy \
 		--deploy-config apps/score.deploy.yaml \
 		--env ${HUMANITEC_ENVIRONMENT} \
