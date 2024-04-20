@@ -2,6 +2,8 @@
 
 https://github.com/Azure-Samples/aks-store-demo
 
+![](https://github.com/Azure-Samples/aks-store-demo/raw/main/assets/demo-arch.png)
+
 TODOs:
 - [X] `order-service`
 - [X] `amqp` Humanitec resource definition
