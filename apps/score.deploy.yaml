@@ -13,3 +13,6 @@ workloads:
   - name: store-demo/makeline-service
     specFile: ./makeline-service/score.yaml
     extensionsFile: ./makeline-service/humanitec.score.yaml
+  - name: store-demo/store-admin
+    specFile: ./store-admin/score.yaml
+    extensionsFile: ./store-admin/humanitec.score.yaml
