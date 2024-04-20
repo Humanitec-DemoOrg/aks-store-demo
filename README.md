@@ -4,21 +4,13 @@ Get the [Azure-Samples/aks-store-demo](https://github.com/Azure-Samples/aks-stor
 
 ![](https://github.com/Azure-Samples/aks-store-demo/raw/main/assets/demo-arch.png)
 
-TODOs:
-- [X] `order-service`
-- [X] `amqp` Humanitec resource definition
-- [X] `product-service`
-- [X] `store-front`
-- [ ] `score-compose` (current issue with `service`)
-- [X] `mongodb` Humanitec resource definition
-- [X] `store-admin`
-- [X] `makeline-service`
-
 ## Local deployment
 
 You will need to [install `score-compose`](https://docs.score.dev/docs/score-implementation/score-compose/) locally.
 
-Deploy locally (current issue with `service`):
+_Note: there is a current issue in `score-compose` not supporting yet the `service` resources. [Coming soon](https://github.com/score-spec/score-compose/issues/118)._
+
+Deploy locally:
 ```bash
 make compose-up
 ```
