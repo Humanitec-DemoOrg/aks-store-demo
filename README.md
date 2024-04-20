@@ -9,7 +9,11 @@ TODOs:
 - [X] `amqp` Humanitec resource definition
 - [X] `product-service`
 - [X] `store-front`
-- [X] `score-compose`
+- [ ] `score-compose` (current issue with `service`)
+- [ ] `mongodb` Humanitec resource definition
+- [ ] `store-admin`
+- [ ] `virtual-customer`
+- [ ] `virtual-worker`
 
 Deploy locally:
 ```bash
