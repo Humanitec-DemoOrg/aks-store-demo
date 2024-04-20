@@ -12,11 +12,12 @@ TODOs:
 - [ ] `score-compose` (current issue with `service`)
 - [ ] `mongodb` Humanitec resource definition
 - [ ] `store-admin`
-- [ ] `makeline-service`
+- [X] `makeline-service`
 - [ ] `virtual-customer`
 - [ ] `virtual-worker`
+- [ ] Azure Cosmos DB
 
-Deploy locally:
+Deploy locally (current issue with `service`):
 ```bash
 make compose-up
 ```
