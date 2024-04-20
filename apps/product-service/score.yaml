@@ -4,8 +4,6 @@ metadata:
 containers:
   product-service:
     image: ghcr.io/azure-samples/aks-store-demo/product-service:1.3.0
-    variables:
-      AI_SERVICE_URL: "http://"${resources.ai-service.name}:5001/"
     livenessProbe:
       httpGet:
         path: /health
@@ -26,6 +24,3 @@ service:
     http:
       port: 3002
       targetPort: 3002
-resources:
-  ai-service:
-    type: service

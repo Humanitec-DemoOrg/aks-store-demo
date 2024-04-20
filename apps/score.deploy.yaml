@@ -7,3 +7,6 @@ workloads:
   - name: store-demo/product-service
     specFile: ./product-service/score.yaml
     extensionsFile: ./product-service/humanitec.score.yaml
+  - name: store-demo/store-front
+    specFile: ./store-front/score.yaml
+    extensionsFile: ./store-front/humanitec.score.yaml
