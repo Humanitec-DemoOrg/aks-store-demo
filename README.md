@@ -1,6 +1,6 @@
 # aks-store-demo
 
-https://github.com/Azure-Samples/aks-store-demo
+Get the [Azure-Samples/aks-store-demo](https://github.com/Azure-Samples/aks-store-demo) to Score and Humanitec.
 
 ![](https://github.com/Azure-Samples/aks-store-demo/raw/main/assets/demo-arch.png)
 
@@ -13,9 +13,6 @@ TODOs:
 - [X] `mongodb` Humanitec resource definition
 - [X] `store-admin`
 - [X] `makeline-service`
-- [ ] `virtual-customer`
-- [ ] `virtual-worker`
-- [ ] Azure Cosmos DB
 
 Deploy locally (current issue with `service`):
 ```bash
@@ -40,3 +37,5 @@ humctl apply \
 
 make score-deploy
 ```
+
+![](docs/demo-arch-graph.png)
