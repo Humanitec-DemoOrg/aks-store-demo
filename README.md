@@ -10,7 +10,7 @@ TODOs:
 - [X] `product-service`
 - [X] `store-front`
 - [ ] `score-compose` (current issue with `service`)
-- [ ] `mongodb` Humanitec resource definition
+- [X] `mongodb` Humanitec resource definition
 - [X] `store-admin`
 - [X] `makeline-service`
 - [ ] `virtual-customer`
@@ -35,6 +35,8 @@ humctl create app ${HUMANITEC_APPLICATION} \
 
 humctl apply \
     -f resources/in-cluster-rabbitmq.yaml
+humctl apply \
+    -f resources/in-cluster-mongodb.yaml
 
 make score-deploy
 ```

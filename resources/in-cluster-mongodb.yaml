@@ -1,0 +1,88 @@
+apiVersion: entity.humanitec.io/v1b1
+kind: Definition
+metadata:
+  id: mongodb-in-cluster
+entity:
+  name: mongodb-in-cluster
+  type: mongodb
+  driver_type: humanitec/template
+  driver_inputs:
+    values:
+      templates:
+        cookie: |
+          rootUsername: {{ .init.rootUsername }}
+          name:         {{ .init.name }}
+          rootPassword: {{ .init.rootPassword }}
+          port:         {{ .init.port }}
+        init: |-
+          {{- if .cookie}}
+          rootUsername: {{ .cookie.rootUsername }}
+          name:         {{ .cookie.name }}
+          rootPassword: {{ .cookie.rootPassword }}
+          port:         {{ .cookie.port }}
+          {{- else }}
+          rootUsername: {{ randAlpha 8 | lower | quote }}
+          rootPassword: {{ randAlphaNum 16 | quote }}
+          name:         db_{{ randAlpha 10}}
+          port:         27017
+          {{- end }}
+          id: mongodb-{{ .id }}
+        manifests: |-
+          {{ .resource.id }}-deployment.yaml:
+            location: namespace
+            data:
+              apiVersion: apps/v1
+              kind: Deployment
+              metadata:
+                name: {{ .init.id }}
+              spec:
+                selector:
+                  matchLabels:
+                    app: {{ .init.id }}
+                template:
+                  metadata:
+                    labels:
+                      app: {{ .init.id }}
+                  spec:
+                    containers:
+                    - name: mongodb
+                      image: mongo
+                      ports:
+                      - containerPort: {{ .init.port }}
+                      env:
+                      - name: MONGO_INITDB_ROOT_USERNAME
+                        value: {{ .init.rootUsername }}
+                      - name: MONGO_INITDB_ROOT_PASSWORD
+                        valueFrom:
+                          secretKeyRef:
+                            name: {{ .init.id }}
+                            key: MONGO_INITDB_ROOT_PASSWORD
+          {{ .resource.id }}-service.yaml:
+            location: namespace
+            data:
+              apiVersion: v1
+              kind: Service
+              metadata:
+                name: {{ .init.id }}
+              spec:
+                type: ClusterIP
+                selector:
+                  app: {{ .init.id }}
+                ports:
+                - name: tcp-mongodb
+                  port: {{ .init.port }}
+                  targetPort: {{ .init.port }}
+          {{ .resource.id }}-secret.yaml:
+            location: namespace
+            data:
+              apiVersion: v1
+              kind: Secret
+              metadata:
+                name: {{ .init.id }}
+              type: Opaque
+              data:
+                MONGO_INITDB_ROOT_PASSWORD: {{ .init.rootPassword | b64enc }}
+        secrets: |
+          connection: mongodb://{{ .init.rootUsername }}:{{ .init.rootPassword }}@{{ .init.id }}:{{ .init.port }}/
+  criteria:
+    - {}
