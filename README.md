@@ -11,7 +11,7 @@ TODOs:
 - [X] `store-front`
 - [ ] `score-compose` (current issue with `service`)
 - [ ] `mongodb` Humanitec resource definition
-- [ ] `store-admin`
+- [X] `store-admin`
 - [X] `makeline-service`
 - [ ] `virtual-customer`
 - [ ] `virtual-worker`

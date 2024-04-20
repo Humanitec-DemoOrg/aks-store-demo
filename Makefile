@@ -19,7 +19,8 @@ compose.yaml:
 		apps/order-service/score.yaml \
 		apps/product-service/score.yaml \
 		apps/store-front/score.yaml \
-		apps/makeline-service/score.yaml
+		apps/makeline-service/score.yaml \
+		apps/store-admin/score.yaml
 
 ## Generate a compose.yaml file from the score specs and launch it.
 .PHONY: compose-up
