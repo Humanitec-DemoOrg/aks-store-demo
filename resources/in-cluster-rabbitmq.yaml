@@ -10,12 +10,12 @@ entity:
     values:
       templates:
         init: |-
-          name: rabbitmq
+          name: rabbitmq-{{ randAlpha 5 | lower}}
           port: 5672
           username: username
           password: password
         manifests: |-
-          deployment.yaml:
+          {{ .resource.id }}-deployment.yaml:
             location: namespace
             data:
               apiVersion: apps/v1
@@ -62,11 +62,11 @@ entity:
                     volumes:
                     - name: rabbitmq-enabled-plugins
                       configMap:
-                        name: rabbitmq-enabled-plugins
+                        name: {{ .init.name }}
                         items:
                         - key: rabbitmq_enabled_plugins
                           path: enabled_plugins
-          configmap.yaml:
+          {{ .resource.id }}-configmap.yaml:
             location: namespace
             data:
               apiVersion: v1
@@ -75,8 +75,8 @@ entity:
                   [rabbitmq_management,rabbitmq_prometheus,rabbitmq_amqp1_0].
               kind: ConfigMap
               metadata:
-                name: rabbitmq-enabled-plugins
-          service.yaml:
+                name: {{ .init.name }}
+          {{ .resource.id }}-service.yaml:
             location: namespace
             data:
               apiVersion: v1
