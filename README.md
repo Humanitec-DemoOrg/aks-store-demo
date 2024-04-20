@@ -14,10 +14,18 @@ TODOs:
 - [X] `store-admin`
 - [X] `makeline-service`
 
+## Local deployment
+
+You will need to [install `score-compose`](https://docs.score.dev/docs/score-implementation/score-compose/) locally.
+
 Deploy locally (current issue with `service`):
 ```bash
 make compose-up
 ```
+
+## Humanitec deployment
+
+You will need to [install `humctl`](https://developer.humanitec.com/platform-orchestrator/cli/) locally.
 
 Deploy to Humanitec:
 ```bash
