@@ -11,7 +11,6 @@ help:
 .PHONY: .FORCE
 .FORCE:
 
-CONTAINER_IMAGE = my-sample-container:test
 compose.yaml:
 	score-compose init \
 		--no-sample
