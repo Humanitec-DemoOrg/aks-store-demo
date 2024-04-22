@@ -35,8 +35,6 @@ service:
 resources:
   orders-queue:
     type: amqp
-    metadata:
-      annotations:
-        score.humanitec.io/resId: shared.orders-queue
+    id: orders-queue
   orders-database:
     type: mongodb
