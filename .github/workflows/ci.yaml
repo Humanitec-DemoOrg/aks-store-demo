@@ -23,3 +23,6 @@ jobs:
           humctl score validate apps/${{ matrix.apps }}/score.yaml \
               --token ${{ secrets.HUMANITEC_TOKEN }} \
               --org ${{ secrets.HUMANITEC_ORG }}
+      - name: make compose-test
+        run: |
+          make compose-test
