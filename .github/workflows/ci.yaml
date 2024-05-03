@@ -8,7 +8,7 @@ jobs:
   score-validate:
     strategy:
       matrix:
-        apps: ["order-service", "product-service", "store-front", "makeline-service", "store-admin"]
+        apps: ["order", "product", "store-front", "makeline", "store-admin"]
     runs-on: ubuntu-22.04
     env:
       HUMCTL_VERSION: '0.23.1'
