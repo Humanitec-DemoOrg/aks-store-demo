@@ -2,13 +2,13 @@
 
 Get the [Azure-Samples/aks-store-demo](https://github.com/Azure-Samples/aks-store-demo) to Score and Humanitec.
 
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/Humanitec-DemoOrg/aks-store-demo)
+
 ![](https://github.com/Azure-Samples/aks-store-demo/raw/main/assets/demo-arch.png)
 
 ## Local deployment
 
 You will need to [install `score-compose`](https://docs.score.dev/docs/score-implementation/score-compose/) locally.
-
-_Note: there is a current issue in `score-compose` not supporting yet the `service` resources. [Coming soon](https://github.com/score-spec/score-compose/issues/118)._
 
 Deploy locally:
 ```bash
