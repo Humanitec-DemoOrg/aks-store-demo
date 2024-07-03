@@ -3,7 +3,7 @@ metadata:
   name: makeline-service
 containers:
   makeline-service:
-    image: ghcr.io/azure-samples/aks-store-demo/makeline-service:1.4.0
+    image: ghcr.io/azure-samples/aks-store-demo/makeline-service:dba0629
     variables:
       ORDER_QUEUE_URI: "amqp://${resources.orders-queue.host}:${resources.orders-queue.port}"
       ORDER_QUEUE_USERNAME: "${resources.orders-queue.username}"
