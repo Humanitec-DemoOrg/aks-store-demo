@@ -3,7 +3,7 @@ metadata:
   name: product-service
 containers:
   product-service:
-    image: ghcr.io/azure-samples/aks-store-demo/product-service:1.4.0
+    image: ghcr.io/azure-samples/aks-store-demo/product-service:1.5.1
     livenessProbe:
       httpGet:
         path: /health

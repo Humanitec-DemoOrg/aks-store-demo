@@ -3,7 +3,7 @@ metadata:
   name: store-front
 containers:
   store-front:
-    image: ghcr.io/azure-samples/aks-store-demo/store-front:87b80c5
+    image: ghcr.io/azure-samples/aks-store-demo/store-front:1.5.1
     variables:
       VUE_APP_ORDER_SERVICE_URL: "http://${resources.order-service.name}:3000/"
       VUE_APP_PRODUCT_SERVICE_URL: "http://${resources.product-service.name}:3002/"
