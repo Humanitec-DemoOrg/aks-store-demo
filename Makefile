@@ -37,6 +37,52 @@ compose-test: compose-up
 compose-down:
 	docker compose down -v --remove-orphans || true
 
+.score-k8s/state.yaml:
+	score-k8s init \
+		--no-sample
+
+manifests.yaml: apps/makeline/score.yaml apps/order/score.yaml apps/product/score.yaml apps/store-admin/score.yaml apps/store-front/score.yaml .score-k8s/state.yaml Makefile
+	score-k8s generate \
+		apps/makeline/score.yaml \
+		apps/order/score.yaml \
+		apps/product/score.yaml \
+		apps/store-admin/score.yaml \
+		apps/store-front/score.yaml
+
+## Create a local Kind cluster.
+.PHONY: kind-create-cluster
+kind-create-cluster:
+	./scripts/setup-kind-cluster.sh
+
+NAMESPACE ?= default
+## Generate a manifests.yaml file from the score spec and apply it in Kubernetes.
+.PHONY: k8s-up
+k8s-up: manifests.yaml
+	kubectl apply \
+		-f manifests.yaml \
+		-n ${NAMESPACE}
+	kubectl wait deployments/store-front \
+		-n ${NAMESPACE} \
+		--for condition=Available \
+		--timeout=90s
+	kubectl wait pods \
+		-n ${NAMESPACE} \
+		-l app.kubernetes.io/name=store-front \
+		--for condition=Ready \
+		--timeout=90s
+
+## Expose the container deployed in Kubernetes via port-forward.
+.PHONY: k8s-test
+k8s-test: k8s-up
+	curl $$(score-k8s resources get-outputs dns.default#store-front.dns --format '{{ .host }}')
+
+## Delete the deployment of the local container in Kubernetes.
+.PHONY: k8s-down
+k8s-down:
+	kubectl delete \
+		-f manifests.yaml \
+		-n ${NAMESPACE}
+
 ## Deploy the workloads to Humanitec.
 .PHONY: humanitec-deploy
 humanitec-deploy:

@@ -6,13 +6,24 @@ Get the [Azure-Samples/aks-store-demo](https://github.com/Azure-Samples/aks-stor
 
 ![](https://github.com/Azure-Samples/aks-store-demo/raw/main/assets/demo-arch.png)
 
-## Local deployment
+## Local deployment with Docker Compose
 
-You will need to [install `score-compose`](https://docs.score.dev/docs/score-implementation/score-compose/) locally.
-
-Deploy locally:
+Deploy and test locally with Docker compose:
 ```bash
 make compose-up
+
+make compose-test
+```
+
+## Local deployment with Kind cluster
+
+Deploy and test locally with Kind cluster:
+```bash
+make kind-create-cluster
+
+make k8s-up
+
+make k8s-test
 ```
 
 ## Humanitec deployment
