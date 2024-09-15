@@ -11,9 +11,11 @@ help:
 .PHONY: .FORCE
 .FORCE:
 
-compose.yaml: apps/order/score.yaml apps/product/score.yaml apps/store-front/score.yaml apps/store-admin/score.yaml apps/makeline/score.yaml .score-compose/state.yaml Makefile
+.score-compose/state.yaml:
 	score-compose init \
 		--no-sample
+
+compose.yaml: apps/order/score.yaml apps/product/score.yaml apps/store-front/score.yaml apps/store-admin/score.yaml apps/makeline/score.yaml .score-compose/state.yaml Makefile
 	score-compose generate \
 		apps/order/score.yaml \
 		apps/product/score.yaml \
