@@ -13,7 +13,8 @@ help:
 
 .score-compose/state.yaml:
 	score-compose init \
-		--no-sample
+		--no-sample \
+		--provisioners https://raw.githubusercontent.com/score-spec/community-provisioners/refs/heads/main/score-compose/00-service.provisioners.yaml
 
 compose.yaml: apps/order/score.yaml apps/product/score.yaml apps/store-front/score.yaml apps/store-admin/score.yaml apps/makeline/score.yaml .score-compose/state.yaml Makefile
 	score-compose generate \
@@ -41,7 +42,8 @@ compose-down:
 
 .score-k8s/state.yaml:
 	score-k8s init \
-		--no-sample
+		--no-sample \
+		--provisioners https://raw.githubusercontent.com/score-spec/community-provisioners/refs/heads/main/score-k8s/00-service.provisioners.yaml
 
 manifests.yaml: apps/makeline/score.yaml apps/order/score.yaml apps/product/score.yaml apps/store-admin/score.yaml apps/store-front/score.yaml .score-k8s/state.yaml Makefile
 	score-k8s generate \
