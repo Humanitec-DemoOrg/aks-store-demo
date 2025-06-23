@@ -1,6 +1,8 @@
 apiVersion: score.dev/v1b1
 metadata:
   name: store-admin
+  annotations:
+    tags: "javascript,website"
 containers:
   store-admin:
     image: ghcr.io/azure-samples/aks-store-demo/store-admin:1.5.3

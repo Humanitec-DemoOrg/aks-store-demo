@@ -1,6 +1,8 @@
 apiVersion: score.dev/v1b1
 metadata:
   name: makeline-service
+  annotations:
+    tags: "golang,backend"
 containers:
   makeline-service:
     image: ghcr.io/azure-samples/aks-store-demo/makeline-service:1.5.3

@@ -1,6 +1,8 @@
 apiVersion: score.dev/v1b1
 metadata:
   name: store-front
+  annotations:
+    tags: "javascript,website"
 containers:
   store-front:
     image: ghcr.io/azure-samples/aks-store-demo/store-front:1.5.3
