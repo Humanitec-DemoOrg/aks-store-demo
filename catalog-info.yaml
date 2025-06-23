@@ -1,0 +1,161 @@
+---
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+    annotations:
+        github.com/project-slug: Humanitec-DemoOrg/aks-store-demo
+    description: store-demo
+    links:
+        - icon: github
+          title: Repository
+          url: https://github.com/Humanitec-DemoOrg/aks-store-demo
+    name: store-demo
+spec:
+    owner: user:guest
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+    annotations:
+        github.com/project-slug: Humanitec-DemoOrg/aks-store-demo
+    description: makeline-service
+    links:
+        - icon: github
+          title: Repository
+          url: https://github.com/Humanitec-DemoOrg/aks-store-demo
+    name: store-demo-makeline-service
+    title: makeline-service
+spec:
+    dependsOn:
+        - resource:store-demo-makeline-service-orders-database
+        - resource:shared-orders-queue
+    lifecycle: experimental
+    owner: user:guest
+    system: store-demo
+    type: service
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+    annotations:
+        github.com/project-slug: Humanitec-DemoOrg/aks-store-demo
+    description: order-service
+    links:
+        - icon: github
+          title: Repository
+          url: https://github.com/Humanitec-DemoOrg/aks-store-demo
+    name: store-demo-order-service
+    title: order-service
+spec:
+    dependsOn:
+        - resource:shared-orders-queue
+    lifecycle: experimental
+    owner: user:guest
+    system: store-demo
+    type: service
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+    annotations:
+        github.com/project-slug: Humanitec-DemoOrg/aks-store-demo
+    description: product-service
+    links:
+        - icon: github
+          title: Repository
+          url: https://github.com/Humanitec-DemoOrg/aks-store-demo
+    name: store-demo-product-service
+    title: product-service
+spec:
+    lifecycle: experimental
+    owner: user:guest
+    system: store-demo
+    type: service
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+    annotations:
+        github.com/project-slug: Humanitec-DemoOrg/aks-store-demo
+    description: store-admin
+    links:
+        - icon: github
+          title: Repository
+          url: https://github.com/Humanitec-DemoOrg/aks-store-demo
+    name: store-demo-store-admin
+    title: store-admin
+spec:
+    dependsOn:
+        - resource:store-demo-store-admin-dns
+        - component:store-demo-makeline-service
+        - component:store-demo-product-service
+    lifecycle: experimental
+    owner: user:guest
+    system: store-demo
+    type: service
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+    annotations:
+        github.com/project-slug: Humanitec-DemoOrg/aks-store-demo
+    description: store-front
+    links:
+        - icon: github
+          title: Repository
+          url: https://github.com/Humanitec-DemoOrg/aks-store-demo
+    name: store-demo-store-front
+    title: store-front
+spec:
+    dependsOn:
+        - resource:store-demo-store-front-dns
+        - component:store-demo-order-service
+        - component:store-demo-product-service
+    lifecycle: experimental
+    owner: user:guest
+    system: store-demo
+    type: service
+---
+apiVersion: backstage.io/v1alpha1
+kind: Resource
+metadata:
+    description: store-demo-makeline-service-orders-database
+    name: store-demo-makeline-service-orders-database
+    title: orders-database
+spec:
+    owner: user:guest
+    system: store-demo
+    type: mongodb
+---
+apiVersion: backstage.io/v1alpha1
+kind: Resource
+metadata:
+    description: store-demo-store-admin-dns
+    name: store-demo-store-admin-dns
+    title: dns
+spec:
+    owner: user:guest
+    system: store-demo
+    type: dns
+---
+apiVersion: backstage.io/v1alpha1
+kind: Resource
+metadata:
+    description: store-demo-store-front-dns
+    name: store-demo-store-front-dns
+    title: dns
+spec:
+    owner: user:guest
+    system: store-demo
+    type: dns
+---
+apiVersion: backstage.io/v1alpha1
+kind: Resource
+metadata:
+    description: shared-orders-queue
+    name: shared-orders-queue
+    title: orders-queue
+spec:
+    owner: user:guest
+    system: store-demo
+    type: amqp
