@@ -1,6 +1,8 @@
 apiVersion: score.dev/v1b1
 metadata:
   name: product-service
+  annotations:
+    tags: "rust,backend"
 containers:
   product-service:
     image: ghcr.io/azure-samples/aks-store-demo/product-service:1.5.3
