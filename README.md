@@ -67,3 +67,10 @@ humctl resources graph \
 ```
 
 ![](docs/demo-arch-graph.png)
+
+
+## Backstage Catalog Info
+
+[Backstage Catalog Info](catalog-info.yaml)
+
+![](docs/backstage-catalog-info.png)
