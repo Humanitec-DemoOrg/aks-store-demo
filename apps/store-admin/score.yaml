@@ -5,10 +5,7 @@ metadata:
     tags: "javascript,website"
 containers:
   store-admin:
-    image: ghcr.io/azure-samples/aks-store-demo/store-admin:1.5.3
-    variables:
-      VUE_APP_MAKELINE_SERVICE_URL: "http://${resources.makeline-service.name}:3001/"
-      VUE_APP_PRODUCT_SERVICE_URL: "http://${resources.product-service.name}:3002/"
+    image: ghcr.io/azure-samples/aks-store-demo/store-admin:2.0.0
     livenessProbe:
       httpGet:
         path: /health
