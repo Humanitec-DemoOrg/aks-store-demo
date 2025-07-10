@@ -5,7 +5,7 @@ metadata:
     tags: "javascript,backend"
 containers:
   order-service:
-    image: ghcr.io/azure-samples/aks-store-demo/order-service:1.5.3
+    image: ghcr.io/azure-samples/aks-store-demo/order-service:2.0.0
     variables:
       ORDER_QUEUE_HOSTNAME: "${resources.orders-queue.host}"
       ORDER_QUEUE_PORT: "${resources.orders-queue.port}"
